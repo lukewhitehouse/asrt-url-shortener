@@ -1,31 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { isWebUri } from 'valid-url';
 
-// @TODO: Move to Mongo
-const db = [
-  {
-    url: 'https://google.com',
-    slug: 'goo',
-  },
-  {
-    url: 'https:///assortment.io',
-    slug: 'asrt',
-  },
-  {
-    url: 'https://lukewhitehouse.co.uk',
-    slug: 'lw',
-  },
-];
-
-type Link = {
-  url: string;
-  slug: string;
-};
-
-type URLShortenerResponse = {
-  message: string;
-  link?: Link;
-};
+import type { URLShortenerResponse } from '../../../types/link';
+import { db } from '../../../db/mongo';
 
 export default function handler(
   req: NextApiRequest,

@@ -1,15 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { isWebUri } from 'valid-url';
-
-type Link = {
-  url: string;
-  slug: string;
-};
-
-type URLShortenerResponse = {
-  message: string;
-  link?: Link;
-};
+import type { URLShortenerResponse } from '../../../types/link';
 
 export default function handler(
   req: NextApiRequest,
