@@ -26,6 +26,6 @@ export default function handler(
 
   res.status(200).json({
     message: 'Link saved',
-    link: { url, slug },
+    link: { url, slug }
   });
 }

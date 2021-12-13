@@ -7,14 +7,14 @@ type DB = {
 export const db: DB = [
   {
     url: 'https://google.com',
-    slug: 'goo',
+    slug: 'goo'
   },
   {
     url: 'https:///assortment.io',
-    slug: 'asrt',
+    slug: 'asrt'
   },
   {
     url: 'https://lukewhitehouse.co.uk',
-    slug: 'lw',
-  },
+    slug: 'lw'
+  }
 ];

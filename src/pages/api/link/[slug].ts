@@ -40,7 +40,7 @@ export default function handler(
 
       return res.status(200).json({
         message: `Link updated successfully from: ${result.url}`,
-        link: { url, slug },
+        link: { url, slug }
       });
     }
   }
