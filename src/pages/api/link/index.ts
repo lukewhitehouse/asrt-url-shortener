@@ -1,19 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { isWebUri } from 'valid-url';
 
-type CreateNewLinkResponse = {
+type Link = {
+  url: string;
+  slug: string;
+};
+
+type URLShortenerResponse = {
   message: string;
+  link?: Link;
 };
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<CreateNewLinkResponse>
+  res: NextApiResponse<URLShortenerResponse>
 ) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not permitted' });
   }
 
-  const { url = '' } = req.body;
+  const { url = '', slug = '' } = req.body;
 
   if (!url) {
     return res.status(400).json({ message: 'URL not found' });
@@ -21,5 +27,14 @@ export default function handler(
     return res.status(400).json({ message: 'URL was not valid' });
   }
 
-  return res.status(200).json({ message: `URL saved: ${url}` });
+  if (!slug) {
+    return res.status(400).json({ message: 'Slug not found' });
+  } else if (typeof slug !== 'string') {
+    return res.status(400).json({ message: 'Slug was not valid' });
+  }
+
+  return res.status(200).json({
+    message: 'Link saved',
+    link: { url, slug },
+  });
 }
