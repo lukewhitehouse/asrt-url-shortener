@@ -24,7 +24,7 @@ export default function handler(
     return res.status(400).json({ message: 'Slug was not valid' });
   }
 
-  return res.status(200).json({
+  res.status(200).json({
     message: 'Link saved',
     link: { url, slug },
   });
